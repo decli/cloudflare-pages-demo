@@ -1,0 +1,23 @@
+{
+  "name": "cloudflare-pages-demo",
+  "version": "1.0.0",
+  "description": "Interactive web dashboard demo for Cloudflare Pages",
+  "main": "index.html",
+  "scripts": {
+    "dev": "python -m http.server 8000",
+    "build": "echo 'No build step required for static site'",
+    "preview": "python -m http.server 8080"
+  },
+  "keywords": [
+    "cloudflare",
+    "pages",
+    "demo",
+    "javascript",
+    "html",
+    "css",
+    "interactive",
+    "dashboard"
+  ],
+  "author": "Claude Code",
+  "license": "MIT"
+}

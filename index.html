@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cloudflare Pages Demo - Interactive Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>🚀 Cloudflare Pages Demo</h1>
+            <p>Interactive Web Dashboard</p>
+        </header>
+
+        <div class="grid">
+            <div class="card">
+                <h3>🌍 Real-time Clock</h3>
+                <div id="clock" class="clock"></div>
+                <div id="date" class="date"></div>
+            </div>
+
+            <div class="card">
+                <h3>🎨 Color Generator</h3>
+                <div id="colorDisplay" class="color-display"></div>
+                <button id="generateColor" class="btn">Generate Random Color</button>
+                <div id="colorCode" class="color-code"></div>
+            </div>
+
+            <div class="card">
+                <h3>📊 Counter</h3>
+                <div id="counter" class="counter">0</div>
+                <div class="btn-group">
+                    <button id="decrement" class="btn btn-secondary">-</button>
+                    <button id="reset" class="btn btn-outline">Reset</button>
+                    <button id="increment" class="btn btn-primary">+</button>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>🎯 Quick Calculator</h3>
+                <div class="calculator">
+                    <input type="number" id="num1" placeholder="First number">
+                    <select id="operation">
+                        <option value="+">+</option>
+                        <option value="-">-</option>
+                        <option value="*">×</option>
+                        <option value="/">÷</option>
+                    </select>
+                    <input type="number" id="num2" placeholder="Second number">
+                    <button id="calculate" class="btn btn-primary">=</button>
+                </div>
+                <div id="result" class="result"></div>
+            </div>
+
+            <div class="card">
+                <h3>🌟 Text Effects</h3>
+                <input type="text" id="textInput" placeholder="Type something..." maxlength="50">
+                <div class="btn-group">
+                    <button id="uppercase" class="btn btn-sm">UPPER</button>
+                    <button id="lowercase" class="btn btn-sm">lower</button>
+                    <button id="reverse" class="btn btn-sm">esreveR</button>
+                </div>
+                <div id="textOutput" class="text-output"></div>
+            </div>
+
+            <div class="card">
+                <h3>📍 Browser Info</h3>
+                <div class="info-grid">
+                    <div><strong>Browser:</strong> <span id="browserInfo"></span></div>
+                    <div><strong>Platform:</strong> <span id="platformInfo"></span></div>
+                    <div><strong>Language:</strong> <span id="languageInfo"></span></div>
+                    <div><strong>Online:</strong> <span id="onlineStatus"></span></div>
+                </div>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <p>✨ Built with HTML, CSS & JavaScript | Deployed on Cloudflare Pages</p>
+            <div class="stats">
+                <span>Page views: <span id="pageViews">1</span></span>
+                <span>Session time: <span id="sessionTime">0:00</span></span>
+            </div>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
