@@ -1,4 +1,13 @@
 document.addEventListener('DOMContentLoaded', function() {
+    // Google Analytics event tracking helper
+    function trackEvent(eventName, category = 'engagement', parameters = {}) {
+        if (typeof gtag !== 'undefined') {
+            gtag('event', eventName, {
+                event_category: category,
+                ...parameters
+            });
+        }
+    }
     // Clock functionality
     function updateClock() {
         const now = new Date();
@@ -45,6 +54,9 @@ document.addEventListener('DOMContentLoaded', function() {
         setTimeout(() => {
             colorDisplay.style.transform = 'scale(1)';
         }, 150);
+        
+        // Track color generation event
+        trackEvent('color_generated', 'interaction', { color: color });
     }
     
     document.getElementById('generateColor').addEventListener('click', updateColorDisplay);
@@ -65,16 +77,19 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('increment').addEventListener('click', () => {
         counter++;
         updateCounter();
+        trackEvent('counter_increment', 'interaction', { counter_value: counter });
     });
     
     document.getElementById('decrement').addEventListener('click', () => {
         counter--;
         updateCounter();
+        trackEvent('counter_decrement', 'interaction', { counter_value: counter });
     });
     
     document.getElementById('reset').addEventListener('click', () => {
         counter = 0;
         updateCounter();
+        trackEvent('counter_reset', 'interaction');
     });
 
     // Calculator functionality
@@ -110,6 +125,10 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         
         resultElement.textContent = result.toFixed(2).replace(/\.?0+$/, '');
+        trackEvent('calculation_performed', 'interaction', { 
+            operation: operation,
+            result: result
+        });
     });
 
     // Text effects functionality
@@ -128,18 +147,21 @@ document.addEventListener('DOMContentLoaded', function() {
         const text = textInput.value.toUpperCase();
         textInput.value = text;
         updateTextOutput(text);
+        trackEvent('text_transform', 'interaction', { transform_type: 'uppercase' });
     });
     
     document.getElementById('lowercase').addEventListener('click', () => {
         const text = textInput.value.toLowerCase();
         textInput.value = text;
         updateTextOutput(text);
+        trackEvent('text_transform', 'interaction', { transform_type: 'lowercase' });
     });
     
     document.getElementById('reverse').addEventListener('click', () => {
         const text = textInput.value.split('').reverse().join('');
         textInput.value = text;
         updateTextOutput(text);
+        trackEvent('text_transform', 'interaction', { transform_type: 'reverse' });
     });
     
     updateTextOutput('');
@@ -234,4 +256,17 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log('   - Ctrl/Cmd + ↑ : Increment counter');
     console.log('   - Ctrl/Cmd + ↓ : Decrement counter');
     console.log('   - Ctrl/Cmd + Space : Generate new color');
+    
+    // Track page load and initial engagement
+    trackEvent('page_loaded', 'engagement');
+    
+    // Track when user stays on page for 30 seconds
+    setTimeout(() => {
+        trackEvent('engaged_user', 'engagement', { time_on_page: '30_seconds' });
+    }, 30000);
+    
+    // Track when user stays on page for 2 minutes
+    setTimeout(() => {
+        trackEvent('highly_engaged_user', 'engagement', { time_on_page: '2_minutes' });
+    }, 120000);
 });
